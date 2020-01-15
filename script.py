@@ -15,7 +15,6 @@ IELTS = IELTS.set_index(IELTS['student'])
 IELTS = IELTS.drop('student', axis=1)
 IELTS = sum_frame_by_column(IELTS, 'Total', ['Reading','Speaking','Writing','Listening'])
 IELTS = IELTS['Total']*30/100
-print(IELTS)
 
 
 term1 = read_ods("Data1.ods")
@@ -65,7 +64,6 @@ term4 = term4['Total']/7
 academics = { 'Term 1': term1, 'Term 2': term2, 'Term 3' : term3, 'Term 4' : term4 }
 academics = pd.DataFrame(academics)
 academics = academics.sum(axis=1)*40/100
-print(academics)
 
 interview = read_ods("Interview.ods")
 interview.columns = ['student', 'leadership', 'financial', 'Knowledge', 'Friendship', 'Teamwork']
@@ -74,7 +72,6 @@ interview = interview.set_index(interview['student'])
 interview = interview.drop('student', axis=1)
 interview = sum_frame_by_column(interview, 'Total', ['leadership', 'financial', 'Knowledge', 'Friendship', 'Teamwork'])
 interview = interview['Total']*30/100
-print(interview)
 
 total_score = {'academics':academics,'interview':interview,'IELTS':IELTS}
 total_score = pd.DataFrame(total_score)
